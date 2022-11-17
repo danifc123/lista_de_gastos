@@ -1,9 +1,9 @@
 class User {
-  String mail;
-  String password;
-  bool keepOn;
+  String? mail;
+  String? password;
+  bool? keepOn;
 
-  User({required this.mail, required this.password, required this.keepOn});
+  User({this.mail, this.password, this.keepOn});
 
   User.fromJson(Map<String, dynamic> json) {
     mail = json['mail'];
@@ -18,9 +18,10 @@ class User {
     data['keepOn'] = this.keepOn;
     return data;
   }
-
-  String toString(){
-    return "\nE-mail: " + this.mail + "\nPassword: " + this.password;
-  }
-
 }
+
+ // String toString(){
+ //   return "\nE-mail: " + this.mail + "\nPassword: " + this.password;
+ // }
+
+//}

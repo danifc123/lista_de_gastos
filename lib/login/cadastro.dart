@@ -49,6 +49,7 @@ class SignupPage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(56)),
                 ),
                 child: SizedBox.expand(
+                  // ignore: deprecated_member_use
                   child: FlatButton(
                     child: Icon(
                       Icons.add,

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:lista_de_gastos/constants/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:lista_de_gastos/login/login_services.dart';
 import 'package:lista_de_gastos/login/reset-password.dart';
@@ -130,7 +130,7 @@ class LoginPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  onPressed: () => {
+                  onPressed: () => { _doSignUp(),
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -190,7 +190,7 @@ class LoginPage extends StatelessWidget {
     String passForm = this._passwordInputController.text;
 
 
-    void _doLogin() async {
+
       if (_formKey.currentState!.validate()) {
         LoginService()
             .login(_mailImputController.text, _passwordInputController.text);
@@ -198,14 +198,17 @@ class LoginPage extends StatelessWidget {
         print("invalido");
   }
 
-  // Future<User> _getSavedUser() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   String jsonUser = prefs.getString("LOGGIN_USER_INFOS");
-  //
-  //   Map<String, dynamic> mapUser = json.decoder as Map<String, dynamic>;
-  //   User user = User.fromJson(mapUser);
-  //   return user;
+  Future<User> _getSavedUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String jsonUser = prefs.getString( PreferencesKeys.activeUser);
+
+    Map<String, dynamic> mapUser = json.decode(jsonUser);
+    User  user = User.fromJson(mapUser);
+    return user;
+
+    User  savedUser = await _getSavedUser();
   }
 }
 }
 }
+
