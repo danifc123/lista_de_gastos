@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_gastos/login/login.page.dart';
+import 'package:lista_de_gastos/login/cadastro.dart';
+
 
 
 void main() => runApp(Listadegastos());

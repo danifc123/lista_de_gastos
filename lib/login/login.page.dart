@@ -3,14 +3,17 @@ import 'package:lista_de_gastos/constants/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:lista_de_gastos/login/login_services.dart';
 import 'package:lista_de_gastos/login/reset-password.dart';
+import 'package:lista_de_gastos/main.dart';
 import 'package:lista_de_gastos/models/user_model.dart';
 import 'package:lista_de_gastos/screens/transferencias/lista.dart';
 import 'package:lista_de_gastos/sign_up/sign_up_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'cadastro.dart';
+
 class LoginPage extends StatelessWidget {
-  TextEditingController _mailImputController = TextEditingController();
-  TextEditingController _passwordInputController = TextEditingController();
+  final _mailImputController = TextEditingController();
+  final _passwordInputController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -24,6 +27,7 @@ class LoginPage extends StatelessWidget {
           right: 40,
         ),
         color: Colors.white,
+
         child: ListView(
           children: <Widget>[
             SizedBox(
@@ -130,13 +134,13 @@ class LoginPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  onPressed: () => { _doSignUp(),
+                  onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => ListaTransferencias(),
                       ),
-                    )
+                    );
                   },
                 ),
               ),
@@ -152,8 +156,10 @@ class LoginPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   onPressed: () {
-                    _doSignUp();
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                        builder: (context) => SignupPage()));
                   }),
             ),
           ],
@@ -170,14 +176,14 @@ class LoginPage extends StatelessWidget {
       );
     } else {
       print("invalido");
-    // User newUser = User(
-    //   mail: _mailImputController.text,
-    //   password: _passwordInputController.text,
-    //   keepOn: true,
-    // );
-    //
-    // print(newUser);
-    // _saveUser(newUser);
+    User newUser = User(
+      mail: _mailImputController.text,
+      password: _passwordInputController.text,
+      keepOn: true,
+    );
+
+     //print(newUser);
+     //_saveUser(newUser);
   }
 
   void _saveUser(User user) async {

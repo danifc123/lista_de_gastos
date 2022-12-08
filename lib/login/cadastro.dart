@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lista_de_gastos/login/login.page.dart';
+import 'package:lista_de_gastos/screens/transferencias/lista.dart';
 
 class SignupPage extends StatelessWidget {
   @override
@@ -67,7 +69,7 @@ class SignupPage extends StatelessWidget {
               //autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "Nome",
+                labelText: "E-mail",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -123,7 +125,9 @@ class SignupPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));},
                 ),
               ),
             ),
