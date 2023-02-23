@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lista_de_gastos/login/login.page.dart';
 import 'package:lista_de_gastos/screens/transferencias/lista.dart';
+import 'LoginPage.dart';
 
 class SignupPage extends StatelessWidget {
+  final _mailImputController = TextEditingController();
+  final _passwordInputController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +71,7 @@ class SignupPage extends StatelessWidget {
               height: 20,
             ),
             TextFormField(
+              controller:  _mailImputController,
               //autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
@@ -84,6 +90,7 @@ class SignupPage extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+              controller: _passwordInputController,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
@@ -125,7 +132,8 @@ class SignupPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  onPressed: () {Navigator.push(
+                  onPressed: () {
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginPage()));},
                 ),

@@ -134,7 +134,8 @@ class LoginPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  onPressed: () {
+
+                  onPressed: () { doSignUp();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -168,7 +169,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void _doSignUp() {
+  void doSignUp() {
     if (_formKey.currentState!.validate()) {
       SignUpService().signUp(
         _mailImputController.text,
@@ -182,13 +183,14 @@ class LoginPage extends StatelessWidget {
       keepOn: true,
     );
 
-     //print(newUser);
-     //_saveUser(newUser);
+
+
   }
 
   void _saveUser(User user) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("LOGGIN_USER_INFOS", json.encode(user.toJson()));
+
   }
 
   void _doLogin() async {
